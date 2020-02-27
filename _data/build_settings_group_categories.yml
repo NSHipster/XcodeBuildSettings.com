@@ -1,0 +1,42 @@
+Core Build System:
+  - CoreBuildSystem
+
+Swift:
+  - Swift_Compiler
+  - SwiftBuildSettings
+
+Clang:
+  - Apple_Clang
+  - MiG
+
+Metal & OpenCL:
+  - Metal_Compiler
+  - Metal_Linker
+  - OpenCL
+
+Interface Builder:
+  - Interface_Builder_Storyboard_Compiler
+  - Interface_Builder_Storyboard_Postprocessor
+  - comapplexcodetoolsibtoolcompiler
+  - comapplexcodetoolsibtoolpostprocessor
+
+Assets & Resources:
+  - comapplecompilersassetcatalog
+  - comapplebuild-tasksgenerate-texture-atlas
+  - CopyPlistFile
+  - CopyStringsFile
+  - CopyTiffFile
+
+Core Data:
+  - comapplecompilersmodelcoredata
+  - comapplecompilersmodelcoredatamapping
+  - comapplecompilersmodelpersistence
+
+Miscellaneous:
+  - Cpp
+  - DTrace
+  - Lex
+  - Nasm
+  - OSACompile
+  - Rez
+  - Yacc

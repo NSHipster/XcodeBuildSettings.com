@@ -1,0 +1,38 @@
+title: Xcode Build Settings
+email: mattt@nshipster.com
+description: >-
+  Build settings for Xcode
+baseurl: ""
+url: "https://xcodebuildsettings.com"
+twitter_username: NSHipster
+github_username: NSHipster
+
+markdown: kramdown
+
+# kramdown:
+#   syntax_highlighter_opts:
+#     default_lang: c
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+include:
+  - .well-known
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Rakefile
+  - README.md
+  - vendor/
+
+assets:
+  source_maps: false
+  compression: true
+  defaults:
+    js: { integrity: true }
+    css: { integrity: true }
+    img: { integrity: true }

@@ -1,0 +1,27 @@
+Apple_Clang: Clang
+comapplebuild-tasksgenerate-texture-atlas: Generate Texture Atlas Build Task
+comapplecompilersassetcatalog: Asset Catalog Compiler
+comapplecompilersmodelcoredata: Core Data Model Compiler
+comapplecompilersmodelcoredatamapping: Core Data Mapping Model Compiler
+comapplecompilersmodelpersistence: Persistence Model Compiler
+comapplexcodetoolsibtoolcompiler: Interface Builder Compiler
+comapplexcodetoolsibtoolpostprocessor: Interface Builder Post-Processor
+CopyPlistFile: Copy .plist Files
+CopyStringsFile: Copy .strings Files
+CopyTiffFile: Copy .tiff Files
+CoreBuildSystem: Core Build System
+Cpp: C++
+DTrace: Dtrace
+Interface_Builder_Storyboard_Compiler: Interface Builder Storyboard Compiler
+Interface_Builder_Storyboard_Postprocessor: Interface Builder Storyboard Post-Processor
+Lex: Lex
+Metal_Compiler: Metal Compiler
+Metal_Linker: Metal Linker
+MiG: MiG
+Nasm: NASM
+OpenCL: OpenCL
+OSACompile: Open Scripting Architecture Compiler
+Rez: Rez
+Swift_Compiler: Swift Compiler
+SwiftBuildSettings: Swift Build Settings
+Yacc: Yacc

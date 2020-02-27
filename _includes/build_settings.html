@@ -1,0 +1,50 @@
+{% if include %}
+
+{% assign category_name = include.category_name %}
+{% assign group_name = include.group_name %}
+{% assign build_settings = include.content %}
+
+<section id="{{ group_name | slugify }}">
+    {% if group_name != category_name %}
+    <h3>{{ group_name | escape }}</h3>
+    {% endif %}
+
+    <dl>
+    {% for setting in build_settings %}
+        {% assign key = setting[0] %}
+        {% assign name = setting[1]["name"] %}
+        {% assign description = setting[1]["description"] %}
+        {% assign values = setting[1]["values"] %}
+
+        <dt id="{{ key | downcase | escape }}">
+            <span class="name">
+                <a href="#{{ key | downcase | escape }}">
+            {% if name %}
+                {{ name | escape }}
+            {% else %}
+                {{ key | downcase | humanize | titleize | escape }}
+            {% endif %}
+                </a>
+            </span>
+            <code>{{ key | escape }}</code>
+        </dt>
+        <dd {% if values %}data-has-values="true"{% endif %}>
+            <div class="description">
+                {{ description | markdownify }}
+            </div>
+
+            {% if values %}
+                <dl class="values">
+                {% for value in values %}
+                    <dt>{{ value[0] | escape }}</dt>
+                    <dd>{{ value[1] | markdownify }}</dd>
+                {% endfor %}
+                </dl>
+            {% endif %}
+        </dd>
+    {% endfor %}
+    </dl>
+
+    <a href="#top">Back to top</a>
+</section>
+{% endif %}

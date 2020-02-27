@@ -1,0 +1,25 @@
+<nav>
+    <ul>
+    {% for category in site.data.build_settings_group_categories %}
+        {% assign category_name = category[0] %}
+        {% assign groups = category[1] %}
+
+        <li>
+            <a href="#{{ category_name | slugify }}">
+                {{ category_name | escape }}
+            </a>
+
+            <ul>
+                {% for group in groups %}
+                    {% assign group_name = site.data.build_settings_groups[group] | default: group %}
+                    <li {% if group_name == category_name %}hidden{% endif %}>
+                        <a href="#{{ group_name | slugify }}">
+                            {{ group_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+</nav>

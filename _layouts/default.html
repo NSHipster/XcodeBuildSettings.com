@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title | escape }}</title>
+
+    {% asset "main.css" @inline %}
+</head>
+<body>
+    <header role="banner">
+        <a id="top" aria-hidden="true"></a>
+        <h1>
+            <a href="/">
+                {{ site.title | escape }}
+            </a>
+        </h1>
+
+        <span class="tagline">
+
+        </span>
+    </header>
+
+    {% include navigation.html %}
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <p><strong>An <a href="https://nshipster.com/">NSHipster</a> project</strong>.
+            Source code <a href="https://github.com/NSHipster/XcodeBuildSettings.com">available on GitHub</a>.</p>
+        <p>
+            Last generated on
+            <time datetime="{{ site.time | date_to_xmlschema }}">
+                {{ site.time | date: '%B %d, %Y' }}.
+            </time>
+        </p>
+        <p>All content copyright © {{ site.time | date: '%Y' }} Apple Inc. All rights reserved.</p>
+    </footer>
+
+    {% asset "main.js" defer async %}
+</body>
+</html>
