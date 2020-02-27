@@ -371,3 +371,18 @@ a[href="#top"] {
 .highlight {
   margin: 1em 0;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: $darkgray;
+    color: $darkmodegray;
+  }
+
+  a {
+    color: $darkmodegray;
+  }
+
+  p code {
+    color: $darkmodegray;
+  }
+}
