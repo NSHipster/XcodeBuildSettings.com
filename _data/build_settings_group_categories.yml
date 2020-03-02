@@ -1,0 +1,62 @@
+Core Build System:
+  - StandardProperties
+  - StandardBuildSettings
+  - NativeBuildSystem
+  - CodeSign
+  - LinkExecutables
+  - StripSymbols
+  - CreateStaticLibrary
+  - SourceVersioning
+  - JamBuildSystem
+  - TextBasedAPITool
+  - xcmpCompileBuildSettings
+
+Swift:
+  - SwiftBuildSettings
+  - SwiftCompiler
+  - Swiftstdlibtool
+
+Clang:
+  - Clang
+  - CPreprocessor
+  - C++Preprocessor
+
+Metal & OpenCL:
+  - MetalCompiler
+  - MetalLinker
+  - OpenCL
+
+Interface Builder:
+  - NIBPostprocessor
+  - StoryboardCompiler
+  - StoryboardLinker
+  - StoryboardPostprocessor
+  - XIBCompiler
+
+Assets & Resources:
+  - AssetCatalogCompiler
+  - RealityComposerProjectCompiler
+  - ARKitSkyboxCompiler
+  - USDZCompiler
+  - CopyPlistFile
+  - CopyStringsFile
+  - CopyTiffFile
+  - CompressPNGFiles
+  - SiriIntentDefinitionCompiler
+  - SceneKitDocumentProcessor
+
+Core Data:
+  - DataModelCompilerMOMC
+  - CoreDataMappingModelCompilerMAPC
+
+Miscellaneous:
+  - InfoplistUtility
+  - CoreMLModelCompiler
+  - IOKitInterfaceGenerator
+  - OSACompiler
+  - DTrace
+  - MiG
+  - Nasm
+  - Rez
+  - Lex
+  - Yacc

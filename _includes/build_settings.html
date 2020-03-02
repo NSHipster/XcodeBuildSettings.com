@@ -1,0 +1,80 @@
+{% if include %}
+
+{% assign category_name = include.category_name %}
+{% assign group_name = include.content['name'] %}
+{% assign description = include.content['description'] %}
+{% assign build_settings = include.content['build_settings'] %}
+
+<section id="group-{{ group_name | slugify }}">
+    <header>
+        {% if group_name != category_name %}
+        <h3>{{ group_name | escape }}</h3>
+        {% endif %}
+
+        {% if description %}
+        {{ description | markdownify }}
+        {% endif %}
+    </header>
+
+    <ul>
+    {% for setting in build_settings %}
+        {% assign key = setting[0] %}
+        {% assign name = setting[1]["name"] %}
+        {% assign description = setting[1]["description"] %}
+        {% assign default_value = setting[1]["default_value"] | strip %}
+        {% assign values = setting[1]["values"] %}
+
+        <li id="{{ key | downcase | escape }}" {% if values %}data-has-values="true"{% endif %}>
+            <header>
+                <span class="name">
+                    <a href="#{{ key | downcase | escape }}">
+                {% if name %}
+                    {{ name | escape }}
+                {% else %}
+                    {{ key | downcase | humanize | titleize | escape }}
+                {% endif %}
+                    </a>
+                </span>
+                <code>{{ key | escape }}</code>
+            </header>
+
+            <div class="content">
+
+            <div class="description">
+                {{ description | markdownify }}
+            </div>
+
+            {% if default_value and default_value != empty %}
+            <p>Default value: <code>{{ default_value | escape }}</code></p>
+            {% endif %}
+
+            {% if values %}
+                {% if values[0] %}
+                    <ul class="values">
+                    {% for value in values | sort %}
+                        {% if value == empty %}{% continue %}{% endif %}
+                        {% if value['Value'] %}
+                            <li><code>{{ value['Value'] | escape }}</code></li>
+                        {% else %}
+                            <li><code>{{ value | escape }}</code></li>
+                        {% endif %}
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <dl class="values">
+                    {% for value in values %}
+                        <dt>{{ value[0] | escape }}</dt>
+                        <dd>{{ value[1] | markdownify }}</dd>
+                    {% endfor %}
+                    </dl>
+                {% endif %}
+            {% endif %}
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+
+    <a href="#">Back to top</a>
+</section>
+
+{% endif %}

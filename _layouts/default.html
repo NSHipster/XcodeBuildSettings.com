@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.title | escape }}</title>
+    <meta name="description" content="{{ site.description | markdownify | strip_html }}"/>
+    <meta name="revisit-after" content="1 month"/>
+    {% asset "main.css" @inline %}
+</head>
+<body>
+    <header role="banner">
+        <h1>
+            <a href="/">
+                {{ site.title | escape }}
+            </a>
+        </h1>
+
+        <form id="search" action="#">
+            <input type="search" placeholder="Search {{ site.data.build_settings_count }} build settings"/>
+        </form>
+    </header>
+
+    {% include navigation.html %}
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <p><strong>An <a href="https://nshipster.com/">NSHipster</a> project</strong>.
+            Source code <a href="https://github.com/NSHipster/XcodeBuildSettings.com">available on GitHub</a>.</p>
+        <p>
+            Last generated on
+            <time datetime="{{ site.time | date_to_xmlschema }}">
+                {{ site.time | date: '%B %-d%o, %Y' }}
+            </time>
+            with Xcode {{ site.data.xcode_version }}.
+        </p>
+        <p>All content copyright © {{ site.time | date: '%Y' }} Apple Inc. All rights reserved.</p>
+        <p>Core ML®, Metal®, OpenCL®, Siri®, Swift™, Xcode® and their respective logos are trademarks of Apple Inc.</p>
+    </footer>
+
+    <template id="search-results">
+        <header>
+            <span><var id="number-of-results"></var> <var id="query"></var></span>
+        </header>
+    </template>
+
+    {% asset "main.js" defer async %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<nav>
+    <ul>
+    {% for category in site.data.build_settings_group_categories %}
+        {% assign category_name = category[0] %}
+        {% assign groups = category[1] %}
+
+        <li class="category-{{ category_name | slugify }}">
+            {% asset "icons/{{ category_name | slugify }}.svg" @inline aria-hidden="true" %}
+
+            <a href="#category-{{ category_name | slugify }}">
+                {{ category_name | escape | strip }}
+            </a>
+
+            <ul>
+                {% for group in groups %}
+                    {% assign group_name = site.data.build_settings[group]['name'] %}
+                    <li {% if group_name == category_name %}hidden{% endif %}>
+                        <a href="#group-{{ group_name | slugify }}">
+                            {{ group_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+    </ul>
+</nav>

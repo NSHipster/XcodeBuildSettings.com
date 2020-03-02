@@ -1,0 +1,37 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-background-color: rgb(28, 28, 30);
+    --secondary-background-color: rgb(36, 36, 38);
+    --primary-text-color: rgb(242, 242, 247);
+    --accent-color: rgb(64, 156, 255);
+    --border-color: rgb(58, 58, 60);
+  }
+
+  .category-swift {
+    --accent-color: rgb(255, 105, 97);
+  }
+
+  .category-clang {
+    --accent-color: rgb(112, 215, 255);
+  }
+
+  .category-metal-opencl {
+    --accent-color: rgb(48, 219, 91);
+  }
+
+  .category-core-data {
+    --accent-color: rgb(125, 122, 255);
+  }
+
+  .category-assets-resources {
+    --accent-color: rgb(218, 143, 255);
+  }
+
+  .category-interface-builder {
+    --accent-color: rgb(255, 179, 64);
+  }
+
+  .category-miscellaneous {
+    --accent-color: rgb(174, 174, 178);
+  }
+}

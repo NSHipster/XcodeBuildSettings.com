@@ -1,0 +1,33 @@
+{% capture json %}
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+      {% for file in site.data.build_settings %}
+         {% for setting in file[1] %}
+            {% assign key = setting[0] %}
+            {% assign name = setting[1]["name"] %}
+            {% assign description = setting[1]["description"] %}
+            {
+                "@type": "Question",
+                "name": "What is the <code>{{ key }}</code> Xcode build setting?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  {% if description %}
+                  "text": {{ description | markdownify | strip | json_escape }}
+                  {% elsif name %}
+                  "text": {{ name | jsonify }}
+                  {% else %}
+                  "text": {{ key | downcase | humanize | titleize | jsonify }}
+                  {% endif %}
+                }
+            },
+         {% endfor %}
+      {% endfor %}
+  ]
+}
+{% endcapture %}
+
+<script type="application/ld+json">
+{{ json | normalize_whitespace | replace: ", ]", "]" | json_compress }}
+</script>

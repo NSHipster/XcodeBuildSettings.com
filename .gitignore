@@ -1,0 +1,7 @@
+_site
+.sass-cache
+.jekyll-metadata
+.jekyll-cache
+.netlify
+.vscode
+_data/build_settings
