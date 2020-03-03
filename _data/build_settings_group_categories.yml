@@ -3,6 +3,7 @@ Core Build System:
   - StandardBuildSettings
   - NativeBuildSystem
   - CodeSign
+  - EmbeddedBinaryValidationUtility
   - LinkExecutables
   - StripSymbols
   - CreateStaticLibrary
@@ -27,11 +28,11 @@ Metal & OpenCL:
   - OpenCL
 
 Interface Builder:
+  - XIBCompiler
   - NIBPostprocessor
   - StoryboardCompiler
   - StoryboardLinker
   - StoryboardPostprocessor
-  - XIBCompiler
 
 Assets & Resources:
   - AssetCatalogCompiler
@@ -50,7 +51,7 @@ Core Data:
   - CoreDataMappingModelCompilerMAPC
 
 Miscellaneous:
-  - InfoplistUtility
+  - MacCatalyst
   - CoreMLModelCompiler
   - IOKitInterfaceGenerator
   - OSACompiler

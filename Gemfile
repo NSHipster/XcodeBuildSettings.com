@@ -20,6 +20,10 @@ gem 'CFPropertyList'
 gem 'rake'
 gem 'activesupport', '~> 5.0'
 
+group :development do
+    gem 'parallel'
+end
+
 # If you want to use GitHub Pages, remove the "gem "jekyll"" above and
 # uncomment the line below. To upgrade, run `bundle update github-pages`.
 # gem "github-pages", group: :jekyll_plugins

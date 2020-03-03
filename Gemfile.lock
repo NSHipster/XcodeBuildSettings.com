@@ -68,6 +68,7 @@ GEM
     minitest (5.11.3)
     nokogiri (1.10.8)
       mini_portile2 (~> 2.4.0)
+    parallel (1.19.1)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
     public_suffix (4.0.3)
@@ -103,6 +104,7 @@ DEPENDENCIES
   jekyll
   jekyll-assets!
   liquid-c
+  parallel
   rake
   sassc
   sprockets (~> 4.0.beta)
