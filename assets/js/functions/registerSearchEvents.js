@@ -78,8 +78,16 @@ function registerSearchEvents() {
     filterResultsForQuery(query);
   };
 
-  document.querySelector("#search input").addEventListener("search", callback);
-  document.querySelector("#search input").onkeyup = callback;
+  const form = document.querySelector("form#search");
+  const input = form.querySelector('input[type="search"]');
+
+  form.onsubmit = event => {
+    event.preventDefault();
+    callback();
+  };
+
+  input.addEventListener("search", callback);
+  input.onkeyup = callback;
 
   let template = document
     .querySelector("template#search-results")
