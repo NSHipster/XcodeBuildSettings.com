@@ -60,17 +60,23 @@ function filterResultsForQuery(query) {
 
 function registerSearchEvents() {
   window.search_index = lunr(function() {
-    this.ref("key");
-    this.field("name");
+    this.ref("id");
+    this.field("key", { boost: 100 });
+    this.field("name", { boost: 10 });
+    this.field("description");
 
-    document
-      .querySelectorAll("section section > ul > li > header")
-      .forEach(term => {
-        this.add({
-          key: term.querySelector("code").textContent,
-          name: term.querySelector(".name").textContent
-        });
+    document.querySelectorAll("section section > ul > li").forEach(term => {
+      const id = term.querySelector("header code").textContent;
+      const name = term.querySelector("header .name").textContent;
+      const description = term.querySelector(".description").textContent;
+
+      this.add({
+        id: id,
+        key: id,
+        name: name,
+        description: description
       });
+    });
   });
 
   const callback = event => {
