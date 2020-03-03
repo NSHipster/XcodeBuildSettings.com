@@ -21,6 +21,10 @@
 
     form {
       flex: 0;
+
+      input {
+        background-position-x: -4em;
+      }
     }
   }
 
@@ -177,6 +181,7 @@
     input {
       width: 100%;
       max-width: auto;
+      text-align: left;
     }
   }
 
