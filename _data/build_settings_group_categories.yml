@@ -1,12 +1,12 @@
 Core Build System:
-  - StandardProperties
-  - StandardBuildSettings
+  - CoreBuildSystem
   - NativeBuildSystem
   - CodeSign
-  - EmbeddedBinaryValidationUtility
   - LinkExecutables
   - StripSymbols
   - CreateStaticLibrary
+  - ProductPackagingUtility
+  - EmbeddedBinaryValidationUtility
   - SourceVersioning
   - JamBuildSystem
   - TextBasedAPITool
@@ -20,7 +20,9 @@ Swift:
 Clang:
   - Clang
   - CPreprocessor
-  - C++Preprocessor
+  - ASTBuilder
+  - Shared
+  - Device
 
 Metal & OpenCL:
   - MetalCompiler
@@ -44,7 +46,9 @@ Assets & Resources:
   - CopyTiffFile
   - CompressPNGFiles
   - SiriIntentDefinitionCompiler
+  - SceneKitShaderCompiler
   - SceneKitDocumentProcessor
+  - SpriteKitTextureAtlasGenerator
 
 Core Data:
   - DataModelCompilerMOMC
@@ -52,7 +56,10 @@ Core Data:
 
 Miscellaneous:
   - MacCatalyst
+  - Simulator
+  - XPCService
   - CoreMLModelCompiler
+  - InstrumentsPackageBuilder
   - IOKitInterfaceGenerator
   - OSACompiler
   - DTrace

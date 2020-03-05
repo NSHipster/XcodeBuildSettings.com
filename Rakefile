@@ -37,50 +37,40 @@ task data: ['_data/build_settings'] do |t|
   Parallel.each(xcspec_files) do |path|
     next unless json = plutil_to_json(path)
 
-    name, description, options = nil
+    name, description = nil
+    build_settings = {}
 
-    case json
-    when Hash
-      name = canonicalize(json['Name'])
-      description = json['Description']
-      options = json['Options']
-    when Array
-      if entry = json.detect { |d| d['Type'] == 'BuildSettings' }
-        name = canonicalize(entry['Name'])
-        description = entry['Description']
-        options = entry['Properties']
-      elsif entry = json.flatten.first
-        name = canonicalize(entry['Name'])
-        description = entry['Description']
-        options = entry['Options']
+    entries = case json
+              when Hash then [json]
+              when Array
+                filtered = json.select { |d| d['Type'] == 'BuildSettings' }
+                filtered.empty? ? json : filtered
+              end
+
+    entries.each do |entry|
+      name = canonicalize(entry['Name'])
+      description = entry['Description']
+      options = entry['Properties'] || entry['Options'] || []
+
+      options.each do |option|
+        next unless option_name = option['Name']
+        next unless option_name.match?(/^(?!_)[A-Z_]+/)
+
+        build_settings[option_name] ||= {}
+
+        build_settings[option_name]['name'] = option['DisplayName']
+        build_settings[option_name]['description'] = option['Description']
+        build_settings[option_name]['type'] = option['Type']
+        build_settings[option_name]['default_value'] = option['DefaultValue']
+        build_settings[option_name]['category'] = option['Category']
+        build_settings[option_name]['values'] = option['Values']
+        build_settings[option_name]['command_line_arguments'] = option['CommandLineArgs']
       end
     end
 
-    next unless name && options
-
-    filename = File.join(t.source, normalize(name)) + '.json'
-    build_settings = begin
-                       JSON.parse(File.read(filename))['build_settings']
-                     rescue StandardError
-                       {}
-                     end
-
-    options.each do |option|
-      next unless option_name = option['Name']
-      next unless option_name.match?(/^(?!_)[A-Z_]+/)
-
-      build_settings[option_name] ||= {}
-
-      build_settings[option_name]['name'] = option['DisplayName']
-      build_settings[option_name]['description'] = option['Description']
-      build_settings[option_name]['type'] = option['Type']
-      build_settings[option_name]['default_value'] = option['DefaultValue']
-      build_settings[option_name]['category'] = option['Category']
-      build_settings[option_name]['values'] = option['Values']
-      build_settings[option_name]['command_line_arguments'] = option['CommandLineArgs']
-    end
-
     next if build_settings.empty?
+
+    filename = File.join(t.source, normalize(name || File.basename(path, '.*'))) + '.json'
 
     json = {
       path: path,
@@ -95,7 +85,7 @@ task data: ['_data/build_settings'] do |t|
   strings_files = (
       xcspec_files.map { |f| f.pathmap('%X') + '.strings' } +
       Dir['/Applications/Xcode.app/Contents/PlugIns/**/*.strings']
-  ).uniq
+    ).uniq
 
   Parallel.each(strings_files) do |path|
     begin
@@ -172,7 +162,7 @@ def canonicalize(name)
   when 'SwiftBuildSettings' then 'Swift Build Settings'
 
   when 'Apple Clang' then 'Clang'
-  when 'Cpp' then 'C++ Preprocessor'
+  when 'Cpp' then 'C Preprocessor'
   when /Interface Builder/
     name.gsub(/Interface Builder/, '').strip
   when 'Compile RC Project' then 'Reality Composer Project Compiler'
@@ -181,6 +171,7 @@ def canonicalize(name)
   when 'Intent Definition' then 'Siri Intent Definition Compiler'
   when 'Process SceneKit Document' then 'SceneKit Document Processor'
   when 'OSACompile' then 'OSA Compiler'
+  when 'SceneKitShaderCompiler' then 'SceneKitShaderCompiler'
   else
     name
   end
