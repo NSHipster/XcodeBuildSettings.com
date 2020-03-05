@@ -10,11 +10,11 @@
 </head>
 <body>
     <header role="banner">
-        <h1>
-            <a href="/">
-                {{ site.title | escape }}
-            </a>
-        </h1>
+      <h1>
+        <a href="{{ site.baseurl | default: '/' }}">
+          {{ site.title | escape }}
+        </a>
+      </h1>
 
         <form id="search" action="#">
             <input type="search" placeholder="Search {{ site.data.build_settings_count }} build settings"/>
