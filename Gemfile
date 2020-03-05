@@ -18,4 +18,5 @@ gem 'rake'
 
 group :jekyll_plugins do
   gem 'jekyll-assets', git: 'https://github.com/envygeeks/jekyll-assets.git'
+  gem 'jekyll-tidy'
 end

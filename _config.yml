@@ -25,9 +25,13 @@ exclude:
   - node_modules/
 
 assets:
-  source_maps: false
+  source_maps: true
   compression: true
   defaults:
     js: { integrity: true }
     css: { integrity: true }
     img: { integrity: true }
+
+jekyll_tidy:
+  ignore_env: development
+  compress_html: true

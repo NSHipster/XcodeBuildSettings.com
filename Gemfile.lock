@@ -34,6 +34,8 @@ GEM
     fastimage (2.1.7)
     ffi (1.12.2)
     forwardable-extended (2.6.0)
+    htmlbeautifier (1.3.1)
+    htmlcompressor (0.4.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jekyll (3.6.3)
@@ -51,6 +53,10 @@ GEM
       jekyll (~> 3.1)
     jekyll-sass-converter (1.5.2)
       sass (~> 3.4)
+    jekyll-tidy (0.2.2)
+      htmlbeautifier
+      htmlcompressor
+      jekyll
     jekyll-watch (1.5.1)
       listen (~> 3.0)
     kramdown (1.17.0)
@@ -103,6 +109,7 @@ DEPENDENCIES
   activesupport (~> 5.0)
   jekyll
   jekyll-assets!
+  jekyll-tidy
   liquid-c
   parallel
   rake
