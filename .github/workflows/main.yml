@@ -1,0 +1,69 @@
+name: CI/CD
+
+on:
+  schedule:
+    - cron: 0 0 * * 0
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Attempt to Restore Cached Dependencies
+        id: bundler-cache
+        uses: actions/cache@v1
+        with:
+          path: /vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
+
+      - name: Install Dependencies
+        if: steps.bundler-cache.outputs.cache-hit != 'true'
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Generate Data Sources
+        run: bundle exec rake data
+
+      - name: Build Site
+        run: JEKYLL_ENV=production bundle exec jekyll build --baseurl XcodeBuildSettings.com
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: Site
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: macOS-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: gh-pages
+
+      - name: Download Artifact
+        uses: actions/download-artifact@v1
+        with:
+          name: Site
+
+      - name: Sync Site Contents
+        run: |
+          rsync -avh --exclude='.git/' --exclude='Site' --delete Site/ .
+          rm -rf Site/
+
+      - name: Commit & Push Changes
+        run: |
+          git commit -a -m "Update site"
+          git push origin gh-pages
