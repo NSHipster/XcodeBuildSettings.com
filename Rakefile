@@ -19,19 +19,6 @@ CLEAN << '_data/build_settings'
 
 task default: [:data]
 
-task build: [:default] do
-  sh %(JEKYLL_ENV=production bundle exec jekyll build --trace)
-  begin
-    sh %(tidy -m -w 0 -i --hide-comments yes --tidy-mark no -ashtml -q _site/index.html)
-  rescue StandardError
-    true
-  end
-end
-
-task deploy: [:build] do
-  sh %(netlify deploy --prod -d _site)
-end
-
 task data: ['_data/build_settings'] do |t|
   xcspec_files = Dir['/Applications/Xcode.app/**/*.xcspec']
   Parallel.each(xcspec_files) do |path|
