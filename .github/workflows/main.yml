@@ -1,5 +1,8 @@
 name: CI/CD
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
+
 on:
   schedule:
     - cron: 0 0 * * 0
@@ -33,8 +36,6 @@ jobs:
 
       - name: Generate Data Sources
         run: bundle exec rake data
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
 
       - name: Build Site
         run: JEKYLL_ENV=production bundle exec jekyll build
