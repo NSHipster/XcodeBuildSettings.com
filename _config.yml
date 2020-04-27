@@ -19,6 +19,7 @@ exclude:
   - Gemfile*
   - Procfile
   - Rakefile
+  - assets/
   - rakelib/
   - netlify.toml
   - _redirects
