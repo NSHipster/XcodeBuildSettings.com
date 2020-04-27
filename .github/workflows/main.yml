@@ -63,7 +63,7 @@ jobs:
 
       - name: Sync Site Contents
         run: |
-          rsync -avh --exclude='.git/' --exclude='Site' --delete Site/ .
+          rsync -avzr --delete --exclude='.git/' --exclude='Site' Site/ .
           rm -rf Site/
 
       - name: Commit & Push Changes
