@@ -20,7 +20,7 @@ CLEAN << '_data/build_settings'
 task default: [:data]
 
 task data: ['_data/build_settings'] do |t|
-  xcspec_files = Dir['/Applications/Xcode.app/**/*.xcspec']
+  xcspec_files = Dir["#{path_to_xcode}/**/*.xcspec"]
   Parallel.each(xcspec_files) do |path|
     next unless json = plutil_to_json(path)
 
@@ -71,7 +71,7 @@ task data: ['_data/build_settings'] do |t|
 
   strings_files = (
       xcspec_files.map { |f| f.pathmap('%X') + '.strings' } +
-      Dir['/Applications/Xcode.app/Contents/PlugIns/**/*.strings']
+      Dir["#{path_to_xcode}/Contents/PlugIns/**/*.strings"]
     ).uniq
 
   Parallel.each(strings_files) do |path|
@@ -128,6 +128,10 @@ task data: ['_data/build_settings'] do |t|
 end
 
 private
+
+def path_to_xcode
+  ENV['XCODE_PATH'] || "/Applications/Xcode.app"
+end
 
 def plutil_to_json(path)
   input = File.read(path)
