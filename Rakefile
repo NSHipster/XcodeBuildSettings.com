@@ -8,6 +8,7 @@ require 'rake/clean'
 require 'pp'
 require 'json'
 require 'open3'
+require 'pathname'
 require 'parallel'
 
 CLOBBER << '_site'
@@ -130,7 +131,11 @@ end
 private
 
 def path_to_xcode
-  ENV['XCODE_PATH'] || "/Applications/Xcode.app"
+  if ENV['DEVELOPER_DIR']
+    Pathname.new(ENV['DEVELOPER_DIR'] + "/../..").cleanpath.to_s
+  else
+    "/Applications/Xcode.app"
+  end
 end
 
 def plutil_to_json(path)
