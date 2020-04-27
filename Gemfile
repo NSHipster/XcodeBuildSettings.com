@@ -13,8 +13,10 @@ gem 'uglifier', '~> 4.0'
 gem 'activesupport', '~> 5.0'
 
 gem 'CFPropertyList'
+gem 'nokogiri'
 gem 'parallel'
 gem 'rake'
+gem 'reverse_markdown'
 
 group :jekyll_plugins do
   gem 'jekyll-assets', git: 'https://github.com/envygeeks/jekyll-assets.git'

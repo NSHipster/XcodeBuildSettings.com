@@ -83,6 +83,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    reverse_markdown (2.0.0)
+      nokogiri
     rouge (2.2.1)
     safe_yaml (1.0.5)
     sass (3.7.4)
@@ -111,8 +113,10 @@ DEPENDENCIES
   jekyll-assets!
   jekyll-tidy
   liquid-c
+  nokogiri
   parallel
   rake
+  reverse_markdown
   sassc
   sprockets (~> 4.0.beta)
   uglifier (~> 4.0)
