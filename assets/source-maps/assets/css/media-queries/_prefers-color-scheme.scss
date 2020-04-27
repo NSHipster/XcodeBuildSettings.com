@@ -1,0 +1,75 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-background-color: rgb(28, 28, 30);
+    --secondary-background-color: rgb(36, 36, 38);
+    --primary-text-color: rgb(242, 242, 247);
+    --accent-color: rgb(64, 156, 255);
+    --border-color: rgb(58, 58, 60);
+  }
+
+  .category-swift {
+    --accent-color: rgb(255, 105, 97);
+  }
+
+  .category-clang {
+    --accent-color: rgb(112, 215, 255);
+  }
+
+  .category-metal-opencl {
+    --accent-color: rgb(48, 219, 91);
+  }
+
+  .category-core-data {
+    --accent-color: rgb(125, 122, 255);
+  }
+
+  .category-assets-resources {
+    --accent-color: rgb(218, 143, 255);
+  }
+
+  .category-interface-builder {
+    --accent-color: rgb(255, 179, 64);
+  }
+
+  .category-miscellaneous {
+    --accent-color: rgb(174, 174, 178);
+  }
+
+  @supports (color: color(display-p3 1 1 1)) {
+    :root {
+      --primary-background-color: color(display-p3 0.1098 0.1098 0.1176);
+      --secondary-background-color: color(display-p3 0.1411 0.1411 0.149);
+      --primary-text-color: color(display-p3 0.949 0.949 0.9686);
+      --accent-color: color(display-p3 0.2509 0.6117 1);
+      --border-color: color(display-p3 0.2274 0.2274 0.2352);
+    }
+
+    .category-swift {
+      --accent-color: color(display-p3 1 0.4117 0.3803);
+    }
+
+    .category-clang {
+      --accent-color: color(display-p3 0.4392 0.8431 1);
+    }
+
+    .category-metal-opencl {
+      --accent-color: color(display-p3 0.1882 0.8588 0.3568);
+    }
+
+    .category-core-data {
+      --accent-color: color(display-p3 0.4901 0.4784 1);
+    }
+
+    .category-assets-resources {
+      --accent-color: color(display-p3 0.8549 0.5607 1);
+    }
+
+    .category-interface-builder {
+      --accent-color: color(display-p3 1 0.7019 0.2509);
+    }
+
+    .category-miscellaneous {
+      --accent-color: color(display-p3 0.6823 0.6823 0.698);
+    }
+  }
+}

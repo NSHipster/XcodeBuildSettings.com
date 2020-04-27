@@ -1,0 +1,80 @@
+:root {
+  --primary-background-color: rgb(255, 255, 255);
+  --secondary-background-color: rgb(242, 242, 247);
+  --primary-text-color: rgb(54, 54, 56);
+  --secondary-text-color: rgb(142, 142, 147);
+  --accent-color: rgb(0, 122, 255);
+  --border-color: rgb(229, 229, 234);
+}
+
+.category-swift {
+  --accent-color: rgb(255, 59, 48);
+}
+
+.category-clang {
+  --accent-color: rgb(0, 113, 164);
+}
+
+.category-metal-opencl {
+  --accent-color: rgb(36, 138, 61);
+}
+
+.category-core-data {
+  --accent-color: rgb(88, 86, 214);
+}
+
+.category-assets-resources {
+  --accent-color: rgb(175, 82, 222);
+}
+
+.category-interface-builder {
+  --accent-color: rgb(255, 149, 0);
+}
+
+.category-miscellaneous {
+  --accent-color: rgb(72, 72, 74);
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  :root {
+    --primary-background-color: color(display-p3 1 1 1);
+    --secondary-background-color: color(display-p3 0.949 0.949 0.9686);
+    --primary-text-color: color(display-p3 0.2117 0.2117 0.2196);
+    --secondary-text-color: color(display-p3 0.5568 0.5568 0.5764);
+    --accent-color: color(display-p3 0 0.4784 1);
+    --border-color: color(display-p3 0.898 0.898 0.9176);
+  }
+
+  .category-swift {
+    --accent-color: color(display-p3 1 0.2313 0.1882);
+  }
+
+  .category-clang {
+    --accent-color: color(display-p3 0 0.4431 0.6431);
+  }
+
+  .category-metal-opencl {
+    --accent-color: color(display-p3 0.1411 0.5411 0.2392);
+  }
+
+  .category-core-data {
+    --accent-color: color(display-p3 0.345 0.3372 0.8392);
+  }
+
+  .category-assets-resources {
+    --accent-color: color(display-p3 0.6862 0.3215 0.8705);
+  }
+
+  .category-interface-builder {
+    --accent-color: color(display-p3 1 0.5843 0);
+  }
+
+  .category-miscellaneous {
+    --accent-color: color(display-p3 0.2823 0.2823 0.2901);
+  }
+
+  nav a,
+  form input {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,1 @@
+{"path":"/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/DTrace.xcspec","name":"DTrace","description":"Invoke the 'dtrace' command line utility to compile a DTrace script file.","build_settings":["DTRACE_OTHER_FLAGS","DTRACE_OUTPUT_FILE_TYPE"]}

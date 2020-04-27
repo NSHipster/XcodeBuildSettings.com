@@ -1,0 +1,1 @@
+{"path":"/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/Nasm.xcspec","name":"Nasm","description":"Assemble Using NASM (Netwide 80x86 Assembler)","build_settings":["HEADER_SEARCH_PATHS","NASM_OTHER_FLAGS","NASM_OUTPUT_FILE_FORMAT","NASM_PREINCLUDE_FILE"]}

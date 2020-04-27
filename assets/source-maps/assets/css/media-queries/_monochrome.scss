@@ -1,0 +1,10 @@
+@media (monochrome) and (not(prefers-color-scheme: dark)),
+  print and (not(color)),
+  (prefers-contrast: high),
+  screen and (-ms-high-contrast: active) {
+  :root {
+    --background-color: white !important;
+    --primary-text-color: black !important;
+    --accent-color: black !important;
+  }
+}

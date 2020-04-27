@@ -1,0 +1,1 @@
+{"path":"/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/StripSymbols.xcspec","name":"Strip Symbols","description":"Remove or modify the symbol table of a Mach-O binary","build_settings":["STRIPFLAGS","STRIP_STYLE","STRIP_SWIFT_SYMBOLS"]}
