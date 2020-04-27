@@ -12,6 +12,7 @@ markdown: kramdown
 include:
   - ".well-known"
   - CNAME
+  - data
 
 exclude:
   - README*
