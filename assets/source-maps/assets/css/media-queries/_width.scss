@@ -283,6 +283,8 @@
 
   .build_setting {
     table {
+      display: block;
+      overflow-x: scroll;
       table-layout: auto !important;
     }
   }
