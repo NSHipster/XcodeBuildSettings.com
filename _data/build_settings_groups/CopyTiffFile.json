@@ -1,1 +1,0 @@
-{"path":"/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/SharedSupport/Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/CopyTiffFile.xcspec","name":"Copy Tiff File","description":"Copies a .tiff file resource with optional compression of the destination file","build_settings":["COMPRESS_TIFF_FILES_WHILE_COPYING"]}

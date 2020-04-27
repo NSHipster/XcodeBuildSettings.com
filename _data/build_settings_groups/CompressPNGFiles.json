@@ -1,1 +1,0 @@
-{"path":"/Applications/Xcode.app/Contents/PlugIns/Xcode3Core.ideplugin/Contents/Frameworks/DevToolsCore.framework/Versions/A/Resources/CopyPNGFile.xcspec","name":"Compress PNG Files","description":"Copies a .png file resource, optionally compressing it.","build_settings":["COMPRESS_PNG_FILES","STRIP_PNG_TEXT"]}
