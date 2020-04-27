@@ -1,8 +1,9 @@
 _site
-.sass-cache
-.jekyll-metadata
 .jekyll-cache
+.sass-cache
 .netlify
 .vscode
-_data/build_settings
+_data/build_settings.json
+_data/build_settings_groups
+data
 vendor/

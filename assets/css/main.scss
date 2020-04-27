@@ -67,8 +67,8 @@ body > header {
       background: transparent;
       background-image: asset_url("search.svg");
       background-repeat: no-repeat;
-      background-size: 50% 50%;
-      background-position-x: -3em;
+      background-size: 1em;
+      background-position-x: -0.5em;
       background-position-y: center;
       font-size: 1.25em;
       padding: 0.25em;
@@ -183,6 +183,54 @@ section {
 
   section {
     margin-bottom: 5em;
+  }
+}
+
+.build_setting {
+  table {
+    margin: 1em 0;
+    border-spacing: 1em 0;
+    width: 100%;
+    table-layout: fixed;
+
+    th,
+    td {
+      padding: 0.5em 0;
+    }
+
+    th {
+      text-align: right;
+      width: 10em;
+      border-right: 1px var(--border-color) solid;
+      padding-right: 1em;
+    }
+
+    td {
+      border-bottom: 1px var(--border-color) solid;
+      overflow-x: scroll;
+    }
+
+    tr:last-of-type td {
+      border-bottom: none;
+    }
+
+    td ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        display: inline-block;
+        margin: 0;
+        &:after {
+          content: ", ";
+          margin-right: 0.5ch;
+        }
+
+        &:last-child:after {
+          content: "";
+        }
+      }
+    }
   }
 }
 

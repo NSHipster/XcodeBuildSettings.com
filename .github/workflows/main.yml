@@ -19,7 +19,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Attempt to Restore Cached Dependencies
+      - name: Cache Dependencies
         id: bundler-cache
         uses: actions/cache@v1
         with:
