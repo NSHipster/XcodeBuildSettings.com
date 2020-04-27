@@ -34,7 +34,7 @@ jobs:
       - name: Generate Data Sources
         run: bundle exec rake data
         env:
-          XCODE_PATH: /Applications/Xcode_11.4.app
+          DEVELOPER_DIR: /Applications/Xcode_11.4.app/Contents/Developer
 
       - name: Build Site
         run: JEKYLL_ENV=production bundle exec jekyll build
