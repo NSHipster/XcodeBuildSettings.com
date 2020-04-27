@@ -37,7 +37,7 @@ jobs:
           XCODE_PATH: /Applications/Xcode_11.4.app
 
       - name: Build Site
-        run: JEKYLL_ENV=production bundle exec jekyll build --baseurl XcodeBuildSettings.com
+        run: JEKYLL_ENV=production bundle exec jekyll build
 
       - name: Upload artifact
         uses: actions/upload-artifact@v1.0.0
