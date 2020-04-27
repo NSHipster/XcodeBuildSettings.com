@@ -64,10 +64,10 @@ jobs:
       - name: Sync Site Contents
         run: |
           rsync -avzr --delete --exclude='.git/' --exclude='Site' Site/ .
-          cp -r Site/assets .
           rm -rf Site/
 
       - name: Commit & Push Changes
         run: |
+          git add .
           git commit -a -m "Update site"
           git push origin gh-pages
