@@ -167,6 +167,7 @@ end
 
 def canonicalize(name)
   case name
+  when 'CoreBuildSystem' then 'Core Build System'
   when 'Ld' then 'Link Executables'
   when 'StripSymbols' then 'Strip Symbols'
   when 'Libtool' then 'Create Static Library'
@@ -192,7 +193,7 @@ def canonicalize(name)
 end
 
 def normalize(name)
-  return unless name
+  return nil unless name
 
   name.gsub(/[\s\.\(\)\-]+/, '')
 end
