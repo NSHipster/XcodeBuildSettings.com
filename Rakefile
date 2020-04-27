@@ -10,23 +10,30 @@ require 'json'
 require 'open3'
 require 'pathname'
 require 'parallel'
+require 'open-uri'
+require 'nokogiri'
+require 'reverse_markdown'
 
 CLOBBER << '_site'
 
 directory '_data'
 
-directory '_data/build_settings'
-CLEAN << '_data/build_settings'
+CLEAN << '_data/build_settings.json'
+directory '_data/build_settings_groups'
+CLEAN << '_data/build_settings_groups'
 
 task default: [:data]
 
-task data: ['_data/build_settings'] do |t|
+task data: ['_data/build_settings_groups'] do |t|
+  build_settings = {}
+
   xcspec_files = Dir["#{path_to_xcode}/**/*.xcspec"]
-  Parallel.each(xcspec_files) do |path|
+  xcspec_files.each do |path|
     next unless json = plutil_to_json(path)
 
+    group_build_settings = {}
+
     name, description = nil
-    build_settings = {}
 
     entries = case json
               when Hash then [json]
@@ -44,19 +51,20 @@ task data: ['_data/build_settings'] do |t|
         next unless option_name = option['Name']
         next unless option_name.match?(/^(?!_)[A-Z_]+/)
 
-        build_settings[option_name] ||= {}
-
-        build_settings[option_name]['name'] = option['DisplayName']
-        build_settings[option_name]['description'] = option['Description']
-        build_settings[option_name]['type'] = option['Type']
-        build_settings[option_name]['default_value'] = option['DefaultValue']
-        build_settings[option_name]['category'] = option['Category']
-        build_settings[option_name]['values'] = option['Values']
-        build_settings[option_name]['command_line_arguments'] = option['CommandLineArgs']
+        group_build_settings[option_name] ||= {}
+        group_build_settings[option_name]['name'] = option['DisplayName']
+        group_build_settings[option_name]['description'] = option['Description']
+        group_build_settings[option_name]['type'] = option['Type']
+        group_build_settings[option_name]['default_value'] = option['DefaultValue']
+        group_build_settings[option_name]['category'] = option['Category']
+        group_build_settings[option_name]['values'] = option['Values']
+        group_build_settings[option_name]['command_line_arguments'] = option['CommandLineArgs']
       end
     end
 
-    next if build_settings.empty?
+    next if group_build_settings.empty?
+
+    build_settings.merge!(group_build_settings)
 
     filename = File.join(t.source, normalize(name || File.basename(path, '.*'))) + '.json'
 
@@ -64,7 +72,7 @@ task data: ['_data/build_settings'] do |t|
       path: path,
       name: name,
       description: description,
-      build_settings: build_settings
+      build_settings: group_build_settings.keys.filter { |key| key.match?(/^[A-Z_]+$/) }.sort
     }.to_json
 
     File.write(filename, json)
@@ -76,56 +84,66 @@ task data: ['_data/build_settings'] do |t|
     ).uniq
 
   Parallel.each(strings_files) do |path|
-    begin
-      plist = CFPropertyList::List.new(file: path)
-      strings = CFPropertyList.native_types(plist.value)
-      next unless strings
+    plist = CFPropertyList::List.new(file: path)
+    strings = CFPropertyList.native_types(plist.value)
+    next unless strings
 
-      name = canonicalize(strings['Name'] || File.basename(path, '.*'))
-      description = strings['Description']
+    name = canonicalize(strings['Name'] || File.basename(path, '.*'))
+    description = strings['Description']
 
-      filename = File.join(t.source, normalize(name)) + '.json'
-      build_settings = begin
-                         JSON.parse(File.read(filename))['build_settings']
-                       rescue StandardError
-                         {}
-                       end
+    # filename = File.join(t.source, normalize(name)) + '.json'
 
-      strings.each do |key, value|
-        case key
-        when /^\[(.+)\]-name$/i
-          build_settings[Regexp.last_match(1)] ||= {}
-          build_settings[Regexp.last_match(1)]['name'] = value
-        when /^\[(.+)\]-description$/i
-          build_settings[Regexp.last_match(1)] ||= {}
-          build_settings[Regexp.last_match(1)]['description'] = value
-        when /^\[(.+)\]-description-\[(.+)\]$/i
-          build_settings[Regexp.last_match(1)] ||= {}
-          build_settings[Regexp.last_match(1)]['values'] ||= {}
-          if build_settings[Regexp.last_match(1)]['values'].is_a?(Array)
-            build_settings[Regexp.last_match(1)]['values'] = {}
-          end
-          build_settings[Regexp.last_match(1)]['values'][Regexp.last_match(2)] = value
+    strings.each do |key, value|
+      case key
+      when /^\[(.+)\]-name$/i
+        build_settings[Regexp.last_match(1)] ||= {}
+        build_settings[Regexp.last_match(1)]['name'] = value
+      when /^\[(.+)\]-description$/i
+        build_settings[Regexp.last_match(1)] ||= {}
+        build_settings[Regexp.last_match(1)]['description'] = value
+      when /^\[(.+)\]-description-\[(.+)\]$/i
+        build_settings[Regexp.last_match(1)] ||= {}
+        build_settings[Regexp.last_match(1)]['values'] ||= {}
+        if build_settings[Regexp.last_match(1)]['values'].is_a?(Array)
+          build_settings[Regexp.last_match(1)]['values'] = {}
         end
+        build_settings[Regexp.last_match(1)]['values'][Regexp.last_match(2)] = value
       end
-
-      next if build_settings.empty?
-
-      # puts path, name
-
-      json = {
-        path: path,
-        name: name,
-        description: description,
-        build_settings: build_settings
-      }.to_json
-
-      File.write(filename, json)
-    rescue StandardError => e
-      puts path, e
-      next
     end
+
+  # next if build_settings.empty?
+
+  # puts path, name
+
+  #     json = {
+  #       path: path,
+  #       name: name,
+  #       description: description,
+  #       build_settings: build_settings
+  #     }.to_json
+
+  #     File.write(filename, json)
+  rescue StandardError => e
+    puts path, e
+    next
   end
+
+  doc = Nokogiri::HTML(open('https://help.apple.com/xcode/mac/11.4/en.lproj/itcaec37c2a6.html'))
+  doc.search('div.Subhead').each do |listing|
+    next unless heading = listing.at('h2').unlink
+
+    name, id = heading.text.scan(/^(.+) \((.+)\)$/)[0]
+    description_tags = listing.children.map(&:to_html)
+
+    next unless build_settings[id]
+
+    build_settings[id]['name'] = name
+    build_settings[id]['description'] = ReverseMarkdown.convert(description_tags.join("\n")).strip
+  end
+
+  pp build_settings
+
+  File.write('_data/build_settings.json', build_settings.to_json)
 end
 
 private
