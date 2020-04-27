@@ -1,23 +1,14 @@
 ---
 layout: default
+permalink: /
 ---
 
-<article itemscope itemtype="https://schema.org/FAQPage">
-{% for group in site.data.build_settings_group_categories %}
-    {% assign category_name = group[0] %}
-    {% assign files = group[1] %}
+<article>
 
-    <section id="category-{{ category_name | slugify }}" class="category-{{ category_name | slugify }}">
-        <header>
-            <h2>{{ category_name | escape }}</h2>
-        </header>
-
-    {% for file in files %}
-        {% assign content = site.data.build_settings[file] %}
-
-        {% include build_settings.html category_name=category_name content=content %}
-    {% endfor %}
-    </section>
+{% for category in site.data.build_settings_group_categories %}
+    {% assign category_name = category[0] %}
+    {% assign groups = category[1] %}
+    {% include category.html category_name=category_name groups=groups %}
 {% endfor %}
 
 </article>
