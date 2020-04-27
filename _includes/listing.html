@@ -1,0 +1,73 @@
+{% if include %}
+
+{% assign id = include.build_setting %}
+{% assign build_setting = site.data.build_settings[id] %}
+{% assign name = build_setting["name"] %}
+{% assign description = build_setting["description"] %}
+{% assign type = build_setting["type"] %}
+{% assign values = build_setting["values"] %}
+{% assign default_value = build_setting["default_value"] | strip %}
+
+<li id="{{ id | downcase | escape }}" class="build_setting" {% if values %}data-has-values="true"{% endif %}>
+    <header>
+        <span class="name">
+            <a href="#{{ id | downcase | escape }}">
+        {% if name %}
+            {{ name | escape }}
+        {% else %}
+            {{ id | downcase | humanize | titleize | escape }}
+        {% endif %}
+            </a>
+        </span>
+        <code>{{ id | escape }}</code>
+    </header>
+
+    <div class="content">
+        <div class="description">
+            {{ description | markdownify }}
+        </div>
+
+        <table>
+            <tr>
+                <th>Type</th>
+                <td>{{ type | default: 'String' }}</td>
+            </tr>
+
+            {% if values %}
+                <tr>
+                    <th>Values</th>
+                    <td>
+                        {% if values[0] %}
+                            <ul class="values">
+                            {% for value in values | sort %}
+                                {% if value == empty %}{% continue %}{% endif %}
+                                {% if value['Value'] %}
+                                    <li><code>{{ value['Value'] | escape }}</code></li>
+                                {% else %}
+                                    <li><code>{{ value | escape }}</code></li>
+                                {% endif %}
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <dl class="values">
+                            {% for value in values %}
+                                <dt>{{ value[0] | escape }}</dt>
+                                <dd>{{ value[1] | markdownify }}</dd>
+                            {% endfor %}
+                            </dl>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endif %}
+
+            {% if default_value and default_value != empty %}
+                <tr>
+                    <th>Default Value</th>
+                    <td><code>{{ default_value | escape }}</code></td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+</li>
+
+{% endif %}

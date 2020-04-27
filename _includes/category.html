@@ -1,0 +1,16 @@
+{% if include %}
+
+{% assign category_name = include.category_name %}
+{% assign groups = include.groups %}
+
+<section id="category-{{ category_name | slugify }}" class="category-{{ category_name | slugify }}">
+    <header>
+        <h2>{{ category_name | escape }}</h2>
+    </header>
+
+    {% for item in groups %}
+        {% include group.html category_name=category_name group_id=item %}
+    {% endfor %}
+</section>
+
+{% endif %}

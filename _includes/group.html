@@ -1,0 +1,29 @@
+{% if include %}
+
+{% assign category_name = include.category_name %}
+{% assign group = site.data.build_settings_groups[include.group_id] %}
+{% assign group_name = group['name'] %}
+{% assign description = group['description'] %}
+{% assign build_settings = group['build_settings'] %}
+
+<section id="group-{{ group_name | slugify }}">
+    <header>
+        {% if group_name != category_name %}
+        <h3>{{ group_name | escape }}</h3>
+        {% endif %}
+
+        {% if description %}
+        {{ description | markdownify }}
+        {% endif %}
+    </header>
+
+    <ul>
+    {% for item in build_settings %}
+        {% include listing.html build_setting=item %}
+    {% endfor %}
+    </ul>
+
+    <a href="#">Back to top</a>
+</section>
+
+{% endif %}
