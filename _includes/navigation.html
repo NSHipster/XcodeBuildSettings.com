@@ -13,7 +13,7 @@
 
             <ul>
                 {% for group in groups %}
-                    {% assign group_name = site.data.build_settings[group]['name'] %}
+                    {% assign group_name = site.data.build_settings_groups[group]['name'] %}
                     <li {% if group_name == category_name %}hidden{% endif %}>
                         <a href="#group-{{ group_name | slugify }}">
                             {{ group_name }}
