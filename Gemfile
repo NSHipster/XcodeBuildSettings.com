@@ -10,7 +10,7 @@ gem 'sassc'
 gem 'sprockets', '~> 4.0.beta'
 gem 'uglifier', '~> 4.0'
 
-gem 'activesupport', '~> 5.0'
+gem 'activesupport', '~> 5.2'
 
 gem 'CFPropertyList'
 gem 'nokogiri'
