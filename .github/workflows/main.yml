@@ -48,7 +48,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
       - name: Checkout
@@ -68,6 +68,8 @@ jobs:
 
       - name: Commit & Push Changes
         run: |
+          git config --global user.email "bot@xcodebuildsettings.com"
+          git config --global user.name "CI Bot"
           git add .
           git commit -a -m "Update site"
           git push origin gh-pages
