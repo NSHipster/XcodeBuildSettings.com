@@ -4,13 +4,12 @@ source 'https://rubygems.org'
 
 gem 'jekyll'
 
-gem 'liquid-c'
 gem 'sassc'
 
-gem 'sprockets', '~> 4.0.beta'
+gem 'sprockets', '~> 4.0'
 gem 'uglifier', '~> 4.0'
 
-gem 'activesupport', '~> 5.2'
+gem 'activesupport'
 
 gem 'CFPropertyList'
 gem 'nokogiri'

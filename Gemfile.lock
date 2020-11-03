@@ -19,11 +19,12 @@ GEM
   remote: https://rubygems.org/
   specs:
     CFPropertyList (3.0.2)
-    activesupport (5.2.4.4)
+    activesupport (6.0.3.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+      zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     colorator (1.1.0)
@@ -74,8 +75,6 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     liquid (4.0.3)
-    liquid-c (4.0.0)
-      liquid (>= 3.0.0)
     liquid-tag-parser (2.0.2)
       extras (~> 0.3)
       liquid (>= 3.0, < 5.0)
@@ -114,23 +113,23 @@ GEM
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.7.0)
+    zeitwerk (2.4.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   CFPropertyList
-  activesupport (~> 5.2)
+  activesupport
   jekyll
   jekyll-assets!
   jekyll-tidy
-  liquid-c
   nokogiri
   parallel
   rake
   reverse_markdown
   sassc
-  sprockets (~> 4.0.beta)
+  sprockets (~> 4.0)
   uglifier (~> 4.0)
 
 BUNDLED WITH
