@@ -2,13 +2,14 @@ id,name,description
 ASSETCATALOG_COMPILER_LEADERBOARD_IDENTIFIER_PREFIX,Leaderboard Identifier Prefix,"Leaderboards in the asset catalog may optionally specify a Game Center identifier. If they do not, their name will be prefixed by this value to form an automatically generated identifier."
 ASSETCATALOG_COMPILER_LEADERBOARD_SET_IDENTIFIER_PREFIX,Leaderboard Set Identifier Prefix,"Leaderboard sets in the asset catalog may optionally specify a Game Center identifier. If they do not, their name will be prefixed by this value to form an automatically generated identifier."
 ASSETCATALOG_COMPILER_FLATTENED_APP_ICON_PATH,,
+SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD,Show Mac (Designed for iPhone & iPad) Destination,Show the Mac (Designed for iPhone) and Mac (Designed for iPad) destinations.
 SUPPORTS_MACCATALYST,Supports Mac Catalyst,Support building this target for Mac Catalyst.
 DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER,Derive Mac Catalyst Product Bundle Identifier,"When enabled, Xcode will automatically derive a bundle identifier for this target from its original bundle identifier when it's building for Mac Catalyst."
 IS_MACCATALYST,Building for Mac Catalyst,Indicates whether the target is building for Mac Catalyst. This build setting is intended for use in shell scripts and build setting composition and should be considered read-only.
-LD_THREAD_SANITIZER,,
 CLANG_BITCODE_GENERATION_MODE,,
-CLANG_THREAD_SANITIZER,,
 ASSETCATALOG_COMPILER_COMPLICATION_NAME,Watch Complication Name,The name of a watch complication to use from the asset catalog.
+CLANG_THREAD_SANITIZER,,
+LD_THREAD_SANITIZER,,
 LD_BITCODE_GENERATION_MODE,,
 LD_VERIFY_BITCODE,,
 LD_HIDE_BITCODE_SYMBOLS,,
@@ -162,6 +163,7 @@ GCC_WARN_ABOUT_RETURN_TYPE,Mismatched Return Type,Causes warnings to be emitted 
 CLANG_WARN_DOCUMENTATION_COMMENTS,Documentation Comments,Warns about issues in documentation comments (`doxygen`-style) such as missing or incorrect documentation tags.
 CLANG_WARN_UNREACHABLE_CODE,Unreachable Code,Warns about potentially unreachable code.
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER,Quoted Include In Framework Header,Warns when a quoted include is used instead of a framework style include in a framework header.
+CLANG_WARN_FRAMEWORK_INCLUDE_PRIVATE_FROM_PUBLIC,,
 CLANG_WARN_NULLABLE_TO_NONNULL_CONVERSION,Incorrect Uses of Nullable Values,"Warns when a nullable expression is used somewhere it’s not allowed, such as when passed as a `_Nonnull` parameter."
 CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES,Implicit Atomic Objective-C Properties,Warn about `@property` declarations that are implicitly atomic.
 CLANG_WARN_DIRECT_OBJC_ISA_USAGE,Direct usage of 'isa',Warn about direct accesses to the Objective-C `isa` pointer instead of using a runtime API.
@@ -344,6 +346,8 @@ CLANG_ANALYZER_OBJC_RETAIN_COUNT,Violation of Reference Counting Rules,Warn on l
 CLANG_ANALYZER_OBJC_ATSYNC,@synchronized with nil mutex,Warn on `nil` pointers used as mutexes for `@synchronized`.
 CLANG_ANALYZER_OBJC_DEALLOC,Improper Instance Cleanup in '-dealloc',Warn when an instance is improperly cleaned up in `-dealloc`.
 CLANG_ANALYZER_GCD,Misuse of Grand Central Dispatch,Check for misuses of the Grand Central Dispatch API.
+CLANG_ANALYZER_NULL_DEREFERENCE,,
+CLANG_ANALYZER_DIVIDE_BY_ZERO,,
 CLANG_ANALYZER_NONNULL,Misuse of 'nonnull',Check for misuses of `nonnull` parameter and return types.
 CLANG_ANALYZER_USE_AFTER_MOVE,Use-After-Move Errors in C++,Warn when a C++ object is used after it has been moved from.
 CLANG_ANALYZER_MIG_CONVENTIONS,Violation of Mach Interface Generator Conventions,Warn when a MIG routine violates memory management conventions.
@@ -377,15 +381,20 @@ CLANG_MIGRATOR_OBJC_LITERALS,ObjC literals,Enable migration to modern ObjC liter
 CLANG_MIGRATOR_PROPERTY_DOT_SYNTAX,ObjC property-dot syntax,Enable migration of setter/getter messages to property-dot syntax.
 CLANG_MIGRATOR_OBJC_SUBSCRIPTING,ObjC subscripting,Enable migration to modern ObjC subscripting syntax.
 CLANG_MIGRATOR_OBJC_DESIGNATED_INIT,Infer designated initializer methods,Infer `NS_DESIGNATED_INITIALIZER` for designated initializer methods.
-Texture Atlas Format,,
-Texture Atlas Maximum Size,,
-Enable Warnings,,
+TEXTURE_ATLAS_FORMAT,,
+TEXTURE_ATLAS_MAXIMUM_SIZE,,
+TEXTURE_ATLAS_ENABLE_WARNINGS,,
+MTL_LANGUAGE_REVISION,Metal Language Revision,Determine the language revision to use. A value for this option must be provided.
+MTL_LANGUAGE_REVISION_dialect,,
+RCPROJECT_ENABLE_WARNINGS,Enable Reality Composer Generation Warnings,
 RCPROJECT_CODEGEN_LANGUAGE,RC Generation Language,"The Source-code language to use for generated RC objects. By default Xcode will generate Swift types that represent the objects in your scene. Adjust this setting to explicitly select ""Swift"", or select ""None"" to disable RC object generation."
-RCPROJECT_CODEGEN_SWIFT_VERSION,,
-Other RC Project Compiler flags,,
-Other Skybox Compiler flags,,
-ENABLE_USDZ_COMPILATION,Enable Compilation,
-Other USDZ Compiler flags,,
+RCPROJECT_CODEGEN_SWIFT_VERSION,Reality Composer Generation Swift Version,
+OTHER_RCPROJECT_FLAGS,Other Reality Composer Project Compiler flags,
+SKYBOX_ENABLE_WARNINGS,Enable Skybox Warnings,
+OTHER_SKYBOX_FLAGS,Other Skybox Compiler Flags,
+USDZ_ENABLE_WARNINGS,Enable USDZ Warnings,
+ENABLE_USDZ_COMPILATION,Enable USDZ Compilation,
+OTHER_USDZ_FLAGS,Other USDZ Compiler Flags,
 PLATFORM_NAME,,
 SCENEKIT_DEPLOYMENT_TARGET,,
 XCODE_DEVELOPER_DIR_PATH,,
@@ -415,14 +424,20 @@ ASSETCATALOG_COMPILER_INFOPLIST_CONTENT_FILE,,
 ASSETCATALOG_COMPILER_STICKER_PACK_STRINGS,,
 ASSETCATALOG_COMPILER_APPICON_NAME,Asset Catalog App Icon Set Name,Name of an asset catalog app icon set whose contents will be merged into the `Info.plist`.
 ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME,Asset Catalog Launch Image Set Name,Name of an asset catalog launch image set whose contents will be merged into the `Info.plist`.
+ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME,Global Accent Color Name,"The name of a color resource to use as a the target's accent color, used as the default tint color on iOS and watchOS, and accent color on macOS."
+ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME,Widget Background Color Name,The name of a color resource to use as the background color for a widget.
 RESOURCES_UI_FRAMEWORK_FAMILY,,
 ASSETCATALOG_COMPILER_COMPRESS_PNGS,,
 ASSETCATALOG_COMPILER_ENABLE_ON_DEMAND_RESOURCES,,
+ASSETCATALOG_COMPILER_STANDALONE_ICON_BEHAVIOR,Standalone Icon File Behavior,"Controls whether loose PNG or ICNS files are created for the app icon, in addition to including the content in the Assets.car file. By default, a small subset of sizes are included as loose files, allowing external management tools to display a representative icon without reading the CAR file. This can be set to 'all' or 'none' to include more or fewer icon sizes as loose files."
+ASSETCATALOG_COMPILER_INCLUDE_STICKER_CONTENT,Include Sticker Content,
+ASSETCATALOG_COMPILER_TARGET_STICKERS_ICON_ROLE,Stickers Icon Role,
 ENABLE_ONLY_ACTIVE_RESOURCES,Build Active Resources Only,"Omit inapplicable resources when building for a single device. For example, when building for a device with a Retina display, exclude 1x resources."
 ENABLE_INCREMENTAL_DISTILL,Enable Incremental Distill,Enabled the incremental `distill` option in the asset catalog compiler. This feature is experimental and should only be enabled with caution.
 ASSETCATALOG_COMPILER_OPTIMIZATION,Optimization,"With no value, the compiler uses the default optimization. You can also specify `time` to optimize for speed of access or `space` to optimize for a smaller compiled asset catalogs."
 ASSETCATALOG_FILTER_FOR_DEVICE_MODEL,,
 ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION,,
+ASSETCATALOG_COMPILER_INCLUDE_INFOPLIST_LOCALIZATIONS,Include Asset Localizations in Info.plist,"When enabled, includes the localization information of the selected assets in the generated partial Info.plist file under the CFBundleLocalizations key. This will allow the assets to be used at runtime in the absence of a corresponding lproj directory in the bundle."
 ASSETCATALOG_COMPILER_STICKER_PACK_IDENTIFIER_PREFIX,Sticker Pack Identifier Prefix,"Sticker Packs in the asset catalog may optionally specify an identifier. If they do not, their name will be prefixed by this value to form an automatically generated identifier."
 DEVELOPMENT_LANGUAGE,,
 IBC_FLATTEN_NIBS,Flatten Compiled XIB Files,"If enabled, compile XIB files into flattened (non-wrapper) NIB files. After flattening, the resulting NIB is more compact but no longer editable by Interface Builder. When this option is disabled, the resulting NIB file remains editable in Interface Builder."
@@ -621,7 +636,13 @@ TAPI_DYLIB_CURRENT_VERSION,,
 TAPI_APPLICATION_EXTENSION_API_ONLY,,
 TAPI_REEXPORTED_FRAMEWORK_INSTALL_NAMES,,
 TAPI_REEXPORTED_LIBRARY_INSTALL_NAMES,,
+TAPI_REEXPORTED_FRAMEWORK_NAMES,,
+TAPI_REEXPORTED_LIBRARY_NAMES,,
+TAPI_REEXPORTED_LIBRARY_PATHS,,
 TAPI_DYLIB_ALLOWABLE_CLIENTS,,
+TAPI_ENABLE_MODULES,,
+TAPI_MODULE_CACHE_PATH,,
+TAPI_MODULES_VALIDATE_SYSTEM_HEADERS,,
 TAPI_FRAMEWORK_SEARCH_PATHS,,
 TAPI_SYSTEM_FRAMEWORK_SEARCH_PATHS,,
 TAPI_LIBRARY_SEARCH_PATHS,,
@@ -712,6 +733,13 @@ SWIFT_INDEX_STORE_PATH,,
 SWIFT_INDEX_STORE_ENABLE,,
 SWIFT_EMIT_MODULE_INTERFACE,,
 SWIFT_ENABLE_LIBRARY_EVOLUTION,,
+OTHER_SWIFT_ABI_CHECKER_FLAGS,,
+MTLLINKER_TARGET_TRIPLE,,
+MTLLINKER_INCLUDE_SOURCE,,
+MTLLINKER_OUTPUT_FILE,,
+MTL_LANGUAGE_REVISION_optgen,,
+MTLLINKER_FLAGS,Other Metal Linker Flags,Space-separated list of metal linker flags
+MTLLINKER_ALTERNATE_LINKER,,
 MTL_TARGET_TRIPLE,,
 MTL_ENABLE_DEBUG_INFO,Produce Debugging Information,Debugging information is required for shader debugging and profiling.
 MTL_HEADER_SEARCH_PATH_BUILT_PRODUCTS_DIR,,
@@ -727,19 +755,21 @@ MTLCOMPILER_OUTPUT_FILE,,
 MTLCOMPILER_DEPENDENCY_INFO_FILE,,
 MTL_INDEX_STORE_PATH,,
 MTL_ENABLE_INDEX_STORE,Enable Index-While-Building Functionality (Metal),Control whether the compiler should emit index data while building.
-MTL_DEPLOYMENT_TARGET,,
-MTL_LANGUAGE_REVISION,Metal Language Revision,Determine the language revision to use. A value for this option must be provided.
 MTL_COMPILER_FLAGS,Other Metal Compiler Flags,Space-separated list of compiler flags
-MTLLINKER_FLAGS,Other Metal Linker Flags,Space-separated list of metal linker flags
-MTLLINKER_OUTPUT_FILE,,
 INTENTS_CODEGEN_LANGUAGE,Intent Class Generation Language,"The Source-code language to use for generated Intent class. By default ""Automatic"" will analyze your project to determine the correct language. Adjust this setting to explicitly select ""Swift"" or ""Objective-C""."
 COREML_CODEGEN_SWIFT_GLOBAL_MODULE,CoreML Generated Model Inherits NSObject,"Generate Swift model classes that are marked with @objc and are descendants of NSObject, in order to be accessible and usable in Objective-C. This setting has no effect if ""CoreML Model Class Generation Language"" is set to ""Objective-C""."
 COREML_CODEGEN_LANGUAGE,CoreML Model Class Generation Language,"The Source-code language to use for generated CoreML model class. By default ""Automatic"" will analyze your project to determine the correct language. Adjust this setting to explicitly select ""Swift"" or ""Objective-C"", or select ""None"" to disable model class generation."
 COREML_CODEGEN_SWIFT_VERSION,,
+COREML_DEPLOYMENT_TARGET,,
+COREML_DEPLOYMENT_TARGET__YES,,
+COREML_DEPLOYMENT_TARGET__NO,,
+COREML_PLATFORM_NAME,,
+COREML_PLATFORM_NAME__YES,,
+COREML_PLATFORM_NAME__NO,,
 COREML_COMPILER_INFOPLIST_CONTENT_FILE,,
 MOMC_OUTPUT_SUFFIX,,
-MOMC_OUTPUT_SUFFIX_.xcdatamodeld,,
-MOMC_OUTPUT_SUFFIX_.xcdatamodel,,
+MOMC_OUTPUT_SUFFIX__xcdatamodeld,,
+MOMC_OUTPUT_SUFFIX__xcdatamodel,,
 DEPLOYMENT_TARGET,,
 MOMC_NO_WARNINGS,Suppress all momc warnings,Suppress managed object model compiler (`momc`) warnings from output during the compilation of `.xcdatamodel(d)` files
 MOMC_NO_INVERSE_RELATIONSHIP_WARNINGS,Suppress momc warnings on missing inverse relationships,Suppress managed object model compiler (`momc`) warnings from output on missing inverse relationships during the compilation of `.xcdatamodel(d)` files
@@ -880,6 +910,7 @@ EXCLUDED_ARCHS,,
 ARCHS_STANDARD_32_64_BIT,,
 ARCHS_STANDARD_32_BIT,,
 ARCHS_STANDARD_64_BIT,,
+ARCHS_STANDARD_INCLUDING_64_BIT,,
 SYMROOT,Build Products Path,"The path at which all products will be placed when performing a build. Typically this path is not set per target, but is set per-project or per-user. By default, this is set to `$(PROJECT_DIR)/build`."
 OBJROOT,Intermediate Build Files Path,"The path where intermediate files will be placed during a build. Intermediate files include generated sources, object files, etc. Shell script build phases can place and access files here, as well. Typically this path is not set per target, but is set per project or per user. By default, this is set to `$(PROJECT_DIR)/build`."
 LOCROOT,,
@@ -940,6 +971,7 @@ LOCALIZABLE_CONTENT_DIR,,
 INSTALL_DIR,,Identifies the directory in the developer’s filesystem into which the *installed* product is placed.
 PROJECT_DERIVED_FILE_DIR,,
 SHARED_DERIVED_FILE_DIR,,
+GENERATED_MODULEMAP_DIR,,
 TARGET_BUILD_SUBPATH,,
 BUILT_PRODUCTS_DIR,,"Identifies the directory under which all the product’s files can be found. This directory contains either product files or symbolic links to them. Run Script build phases can use the value of this build setting as a convenient way to refer to the product files built by one or more targets even when these files are scattered throughout a directory hierarchy (for example, when `DEPLOYMENT_LOCATION` is set to `YES`."
 ENABLE_HEADER_DEPENDENCIES,,Specifies whether to automatically track dependencies on included header files.
