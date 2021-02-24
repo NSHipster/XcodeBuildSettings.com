@@ -117,7 +117,7 @@ Follow NSHipster on Twitter
 All code is published under the
 [MIT License](https://opensource.org/licenses/MIT).
 
-All content copyright © 2020 Apple Inc. All rights reserved.
+All content copyright © Apple Inc. All rights reserved.
 
 NSHipster® and the NSHipster Logo
 are registered trademarks of Read Evaluate Press, LLC.
