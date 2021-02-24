@@ -2,5 +2,5 @@
 
 Jekyll::Hooks.register :site, :post_read do |site|
   output = `xed --version`
-  site.data['xcode_version'] = output.scan(/\d+\.\d+\.\d+/).first
+  site.data['xcode_version'] = output.scan(/\d+(\.\d+){1,2}/).first
 end
