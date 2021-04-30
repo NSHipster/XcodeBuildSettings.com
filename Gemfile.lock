@@ -99,7 +99,7 @@ GEM
       ffi (~> 1.0)
     reverse_markdown (2.0.0)
       nokogiri
-    rexml (3.2.4)
+    rexml (3.2.5)
     rouge (3.24.0)
     safe_yaml (1.0.5)
     sassc (2.4.0)
