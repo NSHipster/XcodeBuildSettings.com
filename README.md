@@ -1,3 +1,10 @@
+> **Warning**
+>
+> This project is no longer maintained.
+> See Apple's [Build Settings Reference] for a list of supported Xcode settings. 
+
+---
+
 # Xcode Build Settings
 
 A convenient reference of available build settings for Xcode projects.
@@ -124,3 +131,5 @@ are registered trademarks of Read Evaluate Press, LLC.
 
 Core ML®, Metal®, OpenCL®, Siri®, Swift™, Xcode® and their respective logos
 are trademarks of Apple Inc.
+
+[Build Settings Reference]: https://developer.apple.com/documentation/xcode/build-settings-reference
